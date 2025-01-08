@@ -14,7 +14,7 @@ class PDORdvRepository implements RdvRepositoryInterface
     private array $rdvs = [];
 
     public function __construct() {
-        $dbCredentials = parse_ini_file(__DIR__ . 'toubeelibdb.env.dist');
+        $dbCredentials = parse_ini_file(__DIR__ . 'toubeelibdb.env');
         $data = new PDO('postgres:host=localhost;dbname=toubeelib', $dbCredentials["POSTGRES_USER"], $dbCredentials["POSTGRES_PASSWORD"]);
         $stmt = $data->query('SELECT * FROM RDVS');
         $rdvs = $stmt->fetchAll();
