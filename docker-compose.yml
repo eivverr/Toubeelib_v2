@@ -3,6 +3,17 @@ networks:
     driver: bridge
 
 services:
+  # service gateway.toubeelib : serveur web
+  gateway.toubeelib:
+    image: 'nginx:latest'
+    ports:
+      - '80:80'
+    volumes:
+      - ./gateway:/var/www/html
+    networks:
+      - toubeelib.net
+    depends_on:
+      - api.toubeelib
   # service api.toubeelib : api pour la prise de rdv
   api.toubeelib:
     #  image: 'canals/php:8.3-cli'
