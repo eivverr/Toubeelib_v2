@@ -17,3 +17,4 @@ cache.properties
 composer.phar
 composer.lock
 /app/vendor/
+/gateway/vendor/
