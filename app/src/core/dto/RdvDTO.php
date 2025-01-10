@@ -16,7 +16,7 @@ class RdvDTO extends DTO
 //    protected string $adresse_praticien;
 //    protected string $tel_praticien;
     protected string $ID_patient;
-    protected \DateTimeInterface $date;
+    protected \DateTime $date;
     protected bool $estAnnule;
 //    protected string $specialite_label;
 

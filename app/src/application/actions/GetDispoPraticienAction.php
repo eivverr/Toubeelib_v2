@@ -35,7 +35,9 @@ class GetDispoPraticienAction extends AbstractAction
         }
 
         try {
-            $rdv = $this->rdv_service->getDisponibilitesPraticien($id, $data['date_debut'], $data['date_fin']);
+            $date_debut = new \DateTime($data['date_debut']);
+            $date_fin = new \DateTime($data['date_fin']);
+            $rdv = $this->rdv_service->getDisponibilitesPraticien($id, $date_debut, $date_fin);
         } catch(ServiceRdvInvalidDataException $e) {
             throw new HttpNotFoundException($rq, $e->getMessage());
         }
