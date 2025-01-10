@@ -32,7 +32,7 @@ services:
       - toubeelib.db
     command: php -S 0.0.0.0:80 -t /var/php/public
 
-    # service toubeelib.db : base de données postgresql
+  # service toubeelib.db : base de données postgresql
   toubeelib.db:
     image: 'postgres:latest'
     env_file: app/config/toubeelibdb.env
