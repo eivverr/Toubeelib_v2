@@ -19,24 +19,24 @@ class PDOPraticienRepository implements PraticienRepositoryInterface
     public function __construct() {
         $dataCredentials = parse_ini_file(__DIR__ . '/../../../config/toubeelibdb.env');
         $data = new PDO('pgsql:host=toubeelib.db;dbname=toubeelib', $dataCredentials["POSTGRES_USER"], $dataCredentials["POSTGRES_PASSWORD"]);
-        $stmt = $data->query('SELECT * FROM PRATICIEN');
+        $stmt = $data->query("SELECT * FROM USERS where role= '1'");
         $praticiens = $stmt->fetchAll();
         foreach ($praticiens as $praticien) {
             $this->praticiens[$praticien['id']] = new Praticien($praticien['nom'], $praticien['prenom'], $praticien['adresse'], $praticien['tel']);
             $this->praticiens[$praticien['id']]->setID($praticien['id']);
         }
 
-        $stmt = $data->query('SELECT * FROM SPECIALITE');
+        $stmt = $data->query('SELECT * FROM SPECIALITES');
         $specialites = $stmt->fetchAll();
         foreach ($specialites as $specialite) {
             $this->specialites[$specialite['id']] = new Specialite($specialite['label'], $specialite['description']);
             $this->specialites[$specialite['id']]->setID($specialite['id']);
         }
 
-        $stmt = $data->query('SELECT * FROM specialitepraticien');
+        $stmt = $data->query('SELECT * FROM specialitepraticiens');
         $praticiens_specialites = $stmt->fetchAll();
         foreach ($praticiens_specialites as $praticien_specialite) {
-            $this->praticiens[$praticien_specialite['id_praticien']]->setSpecialite($this->specialites[$praticien_specialite['id_specialite']]);
+            $this->praticiens[$praticien_specialite['id_user']]->setSpecialite($this->specialites[$praticien_specialite['id_specialite']]);
         }
     }
     public function getSpecialiteById(string $id): Specialite
