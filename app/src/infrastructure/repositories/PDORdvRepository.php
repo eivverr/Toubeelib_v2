@@ -16,12 +16,12 @@ class PDORdvRepository implements RdvRepositoryInterface
     public function __construct() {
         $dbCredentials = parse_ini_file(__DIR__ . '/../../../config/toubeelibdb.env');
         $data = new PDO('pgsql:host=toubeelib.db;dbname=toubeelib', $dbCredentials["POSTGRES_USER"], $dbCredentials["POSTGRES_PASSWORD"]);
-        $stmt = $data->query('SELECT * FROM RDV');
+        $stmt = $data->query('SELECT * FROM rdvs');
         $rdvs = $stmt->fetchAll();
         foreach ($rdvs as $rdv){
             $timestamp = $rdv['daterdv'];
             $date = new \DateTime("$timestamp");
-            $this->rdvs[$rdv['id']] = new RendezVous($rdv['id_praticien'], $rdv['id_patient'], $rdv['id_specialite'], $date);
+            $this->rdvs[$rdv['id']] = new RendezVous($rdv["id_user"], $rdv["id_user"], $rdv['id_specialite'], $date);
             $this->rdvs[$rdv['id']]->setID($rdv['id']);
         }
     }
