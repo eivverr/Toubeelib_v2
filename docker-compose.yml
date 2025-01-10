@@ -5,7 +5,7 @@ networks:
 services:
   # service gateway.toubeelib : serveur web
   gateway.toubeelib:
-    image: 'nginx:latest'
+    image: 'canals/php:latest'
     ports:
       - '6081:80'
     volumes:
