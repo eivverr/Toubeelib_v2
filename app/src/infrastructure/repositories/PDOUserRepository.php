@@ -17,7 +17,7 @@ class PDOUserRepository implements UserRepositoryInterface
 
     public function __construct()
     {
-        $dbCredentials = parse_ini_file(__DIR__ . 'toubeelibdb.env');
+        $dbCredentials = parse_ini_file(__DIR__ . '/../../../toubeelibdb.env');
         $pdo = new PDO('postgres:host=localhost;dbname=toubeelib', $dbCredentials["POSTGRES_USER"], $dbCredentials["POSTGRES_PASSWORD"]);
         $stmt = $pdo->query('SELECT * FROM USERS');
         $users = $stmt->fetchAll();

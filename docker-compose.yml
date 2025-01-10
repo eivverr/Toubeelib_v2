@@ -35,7 +35,7 @@ services:
     # service toubeelib.db : base de données postgresql
   toubeelib.db:
     image: 'postgres:latest'
-    env_file: toubeelibdb.env
+    env_file: app/config/toubeelibdb.env
     ports:
       - '5432:5432'
     networks:
