@@ -18,7 +18,7 @@ class PDOPraticienRepository implements PraticienRepositoryInterface
 
     public function __construct() {
         $dataCredentials = parse_ini_file(__DIR__ . '/../../../config/toubeelibdb.env');
-        $data = new PDO('postgres:host=localhost;dbname=toubeelib', $dataCredentials["POSTGRES_USER"], $dataCredentials["POSTGRES_PASSWORD"]);
+        $data = new PDO('pgsql:host=localhost;dbname=toubeelib', $dataCredentials["POSTGRES_USER"], $dataCredentials["POSTGRES_PASSWORD"]);
         $stmt = $data->query('SELECT * FROM USERS where role = 10');
         $praticiens = $stmt->fetchAll();
         foreach ($praticiens as $praticien) {
