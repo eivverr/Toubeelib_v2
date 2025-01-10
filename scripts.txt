@@ -1,61 +1,66 @@
-create table praticien(
-    id varchar primary key,
-    nom varchar,
-    prenom varchar,
-    adresse varchar,
-    tel varchar,
-    specialite_label,
-    primary key(id),
-    foreign key (specialite_label) references specialite(label)
+CREATE TABLE praticien (
+    id VARCHAR PRIMARY KEY,
+    nom VARCHAR,
+    prenom VARCHAR,
+    adresse VARCHAR,
+    tel VARCHAR
 );
 
-create table specialite(
-    id varchar primary key,
-    label varchar,
-    description varchar
+CREATE TABLE specialite (
+    id VARCHAR PRIMARY KEY,
+    label VARCHAR,
+    description VARCHAR
 );
 
-create table specialitepraticien(
-    id_praticien uuid,
-    id_specialite varchar,
-    primary key(id_praticien, id_specialite),
-    foreign key(id_praticien) references users(id),
-    foreign key(id_specialite) references specialite(id)
+CREATE TABLE specialitepraticien (
+    id_praticien VARCHAR,
+    id_specialite VARCHAR,
+    PRIMARY KEY (id_praticien, id_specialite),
+    FOREIGN KEY (id_praticien) REFERENCES praticien(id),
+    FOREIGN KEY (id_specialite) REFERENCES specialite(id)
 );
 
-create table rdv(
-    id varchar primary key,
-    id_praticien uuid,
-    id_specialite varchar,
-    id_patient uuid,
-    daterdv date,
-    estAnnule bool,
-    statut varchar,
-    foreign key(id_praticien) references users(id),
-    foreign key(id_specialite) references specialite(id),
-    foreign key(id_patient) references users(id)
+CREATE TABLE patient (
+    id VARCHAR PRIMARY KEY,
+    nom VARCHAR,
+    prenom VARCHAR,
+    adresse VARCHAR,
+    tel VARCHAR
 );
 
-
+CREATE TABLE rdv (
+    id VARCHAR PRIMARY KEY,
+    id_praticien VARCHAR,
+    id_specialite VARCHAR,
+    id_patient VARCHAR,
+    daterdv DATE,
+    estAnnule BOOLEAN,
+    statut VARCHAR,
+    FOREIGN KEY (id_praticien) REFERENCES praticien(id),
+    FOREIGN KEY (id_specialite) REFERENCES specialite(id),
+    FOREIGN KEY (id_patient) REFERENCES patient(id)
+);
 
 INSERT INTO specialite (id, label, description) VALUES 
 ('s1', 'Cardiologie', 'Spécialité médicale concernant les maladies du cœur et des vaisseaux.'),
 ('s2', 'Dermatologie', 'Spécialité médicale concernant la peau.'),
 ('s3', 'Pédiatrie', 'Spécialité médicale concernant les enfants.');
 
-
-INSERT INTO praticien (id, nom, prenom, adresse, tel, specialite_label) VALUES 
-('p1', 'Dupont', 'Jean', '123 rue Principale', '0600000001', 'Cardiologie'),
-('p2', 'Martin', 'Sophie', '45 rue des Fleurs', '0600000002', 'Dermatologie'),
-('p3', 'Durand', 'Claire', '78 avenue des Champs', '0600000003', 'Pédiatrie');
-
+INSERT INTO praticien (id, nom, prenom, adresse, tel) VALUES 
+('p1', 'Dupont', 'Jean', '123 rue Principale', '0600000001'),
+('p2', 'Martin', 'Sophie', '45 rue des Fleurs', '0600000002'),
+('p3', 'Durand', 'Claire', '78 avenue des Champs', '0600000003');
 
 INSERT INTO specialitepraticien (id_praticien, id_specialite) VALUES 
 ('p1', 's1'),
 ('p2', 's2'),
 ('p3', 's3'),
-('p3', 's1'); -- Exemple d'un praticien avec plusieurs spécialités.
+('p3', 's1');
 
+INSERT INTO patient (id, nom, prenom, adresse, tel) VALUES
+('u1', 'Bernard', 'Alice', '1 impasse des Lilas', '0600000004'),
+('u2', 'Dufour', 'Marc', '99 rue des Violettes', '0600000005'),
+('u3', 'Petit', 'Lucie', '2 rue des Rosiers', '0600000006');
 
 INSERT INTO rdv (id, id_praticien, id_specialite, id_patient, daterdv, estAnnule, statut) VALUES 
 ('r1', 'p1', 's1', 'u1', '2025-01-10', FALSE, 'Confirmé'),
