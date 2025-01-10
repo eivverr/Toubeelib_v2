@@ -17,6 +17,7 @@ services:
   # service api.toubeelib : api pour la prise de rdv
   api.toubeelib:
     #  image: 'canals/php:8.3-cli'
+    restart: unless-stopped
     build:
       context: build
       dockerfile: 8.3-cli.Dockerfile
@@ -35,7 +36,8 @@ services:
   # service toubeelib.db : base de données postgresql
   toubeelib.db:
     image: 'postgres:latest'
-    env_file: app/config/toubeelibdb.env
+    restart: unless-stopped
+    env_file: ./app/config/toubeelibdb.env
     ports:
       - '5432:5432'
     networks:
