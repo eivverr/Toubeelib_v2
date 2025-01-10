@@ -8,7 +8,6 @@ use Psr\Http\Message\ServerRequestInterface;
 
 class ConsulterPraticienAction extends AbstractGatewayAction
 {
-
     private ClientInterface $remote_praticien_service;
 
     public function __construct(ClientInterface $client)
