@@ -7,7 +7,7 @@ return [
 
     ClientInterface::class => function () {
         return new \GuzzleHttp\Client([
-            'base_uri' => 'http://localhost:8080',
+            'base_uri' => 'http://localhost:6080',
             'timeout' => 2.0,
         ]);
     },
