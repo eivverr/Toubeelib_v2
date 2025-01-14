@@ -1,28 +1,28 @@
 <?php
 
 use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
+use Psr\Container\ContainerInterface;
 use toubeelib\gateway\application\actions\ConsulterPraticienAction;
 use toubeelib\gateway\application\actions\HomeAction;
 
 return [
 
-    ClientInterface::class => function () {
+    'toubeelib.client' => function () {
         return new Client([
-            'base_uri' => 'http://api.toubeelib:80',
+            'base_uri' => 'http://api.toubeelib',
             'timeout' => 2.0,
         ]);
     },
 
-    HomeAction::class => function (ClientInterface $c) {
+    HomeAction::class => function (ContainerInterface $c) {
         return new HomeAction(
-            $c->get(ClientInterface::class)
+            $c->get('toubeelib.client')
         );
     },
 
-    ConsulterPraticienAction::class => function (ClientInterface $c) {
+    ConsulterPraticienAction::class => function (ContainerInterface $c) {
         return new ConsulterPraticienAction(
-            $c->get(ClientInterface::class)
+            $c->get('toubeelib.client')
         );
     },
 ];

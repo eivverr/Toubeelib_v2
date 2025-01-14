@@ -2,9 +2,11 @@
 
 namespace toubeelib\gateway\application\actions;
 
-use GuzzleHttp\ClientInterface;
+use Psr\Http\Client\ClientInterface;
+use GuzzleHttp\Exception\ClientException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Slim\Exception\HttpBadRequestException;
 
 class ConsulterPraticienAction extends AbstractGatewayAction
 {
@@ -18,7 +20,11 @@ class ConsulterPraticienAction extends AbstractGatewayAction
     public function __invoke(ServerRequestInterface $rq, ResponseInterface $rs, array $args): ResponseInterface
     {
         $id = $args['id'];
-        $response = $this->remote_praticien_service->get("/praticiens/$id");
+        try {
+            $response = $this->remote_praticien_service->get("/praticiens/$id");
+        } catch (ClientException $e) {
+            throw new HttpBadRequestException($rq, $e->getMessage());
+        }
 
         return $response;
     }
