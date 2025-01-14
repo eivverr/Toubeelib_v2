@@ -9,7 +9,7 @@ return [
 
     ClientInterface::class => function () {
         return new Client([
-            'base_uri' => 'http://localhost:6080',
+            'base_uri' => 'http://api.toubeelib:80',
             'timeout' => 2.0,
         ]);
     },
