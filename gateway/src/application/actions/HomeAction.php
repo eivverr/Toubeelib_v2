@@ -5,7 +5,6 @@ namespace toubeelib\gateway\application\actions;
 use GuzzleHttp\ClientInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use toubeelib\gateway\application\actions\AbstractGatewayAction;
 
 class HomeAction extends AbstractGatewayAction
 {
