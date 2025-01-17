@@ -1,9 +1,9 @@
 <?php
 
-namespace toubeelib\core\repositoryInterfaces;
+namespace toubeelib\app\praticiens\core\repositoryInterfaces;
 
-use toubeelib\core\domain\entities\praticien\Praticien;
-use toubeelib\core\domain\entities\praticien\Specialite;
+use toubeelib\app\praticiens\core\domain\entities\praticien\Praticien;
+use toubeelib\app\praticiens\core\domain\entities\praticien\Specialite;
 
 interface PraticienRepositoryInterface
 {

@@ -38,12 +38,12 @@ class GenericGetPraticienAction extends AbstractGatewayAction
         try {
             return $this->remote_service->request($method, $path, $options);
         } catch (ConnectException | ServerException $e) {
-            throw new HttpInternalServerErrorException($rq, " … ");
+            throw new HttpInternalServerErrorException($rq, $e->getMessage());
         } catch (ClientException $e ) {
             match($e->getCode()) {
-                401 => throw new HttpUnauthorizedException($rq, " … "),
-                403 => throw new HttpForbiddenException($rq, " … "),
-                404 => throw new HttpNotFoundException($rq, " … ")
+                401 => throw new HttpUnauthorizedException($rq, $e->getMessage()),
+                403 => throw new HttpForbiddenException($rq, $e->getMessage()),
+                404 => throw new HttpNotFoundException($rq, $e->getMessage())
             };
         }
     }

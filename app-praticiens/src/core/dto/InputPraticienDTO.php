@@ -1,6 +1,6 @@
 <?php
 
-namespace toubeelib\core\dto;
+namespace toubeelib\app\praticiens\core\dto;
 
 class InputPraticienDTO extends DTO
 {

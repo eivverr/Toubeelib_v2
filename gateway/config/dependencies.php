@@ -17,33 +17,40 @@ return [
         ]);
     },
 
+    'praticiens.client' => function () {
+        return new Client([
+            'base_uri' => 'http://praticiens.toubeelib',
+            'timeout' => 2.0,
+        ]);
+    },
+
     HomeAction::class => function (ContainerInterface $c) {
         return new HomeAction(
-            $c->get('toubeelib.client')
+            $c->get('praticiens.client')
         );
     },
 
     ConsulterPraticiensAction::class => function (ContainerInterface $c) {
         return new ConsulterPraticiensAction(
-            $c->get('toubeelib.client')
+            $c->get('praticiens.client')
         );
     },
 
     ConsulterPraticienByIdAction::class => function (ContainerInterface $c) {
         return new ConsulterPraticienByIdAction(
-            $c->get('toubeelib.client')
+            $c->get('praticiens.client')
         );
     },
 
     ConsulterPraticienRdvs::class => function (ContainerInterface $c) {
         return new ConsulterPraticienRdvs(
-            $c->get('toubeelib.client')
+            $c->get('praticiens.client')
         );
     },
 
     GenericGetPraticienAction::class => function (ContainerInterface $c) {
         return new GenericGetPraticienAction(
-            $c->get('toubeelib.client')
+            $c->get('praticiens.client')
         );
     },
 ];

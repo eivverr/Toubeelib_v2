@@ -1,6 +1,6 @@
 <?php
 
-namespace toubeelib\core\services\praticien;
+namespace toubeelib\app\praticiens\core\services\praticien;
 
 use toubeelib\core\dto\InputPraticienDTO;
 use toubeelib\core\dto\PraticienDTO;

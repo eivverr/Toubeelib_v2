@@ -1,33 +1,17 @@
 <?php
 
 use Psr\Container\ContainerInterface;
-use toubeelib\app\praticiens\actions\GetDispoPraticienAction;
 use toubeelib\app\praticiens\actions\GetPraticienByIdAction;
 use toubeelib\app\praticiens\actions\GetPraticiensActions;
-use toubeelib\core\repositoryInterfaces\PraticienRepositoryInterface;
-use toubeelib\core\repositoryInterfaces\RdvRepositoryInterface;
-use toubeelib\core\services\praticien\ServicePraticien;
-use toubeelib\core\services\praticien\ServicePraticienInterface;
-use toubeelib\core\services\rdv\ServiceRdv;
-use toubeelib\core\services\rdv\ServiceRdvInterface;
-use toubeelib\infrastructure\repositories\PDOPraticienRepository;
-use toubeelib\infrastructure\repositories\PDORdvRepository;
+use toubeelib\app\praticiens\core\repositoryInterfaces\PraticienRepositoryInterface;
+use toubeelib\app\praticiens\core\services\praticien\ServicePraticien;
+use toubeelib\app\praticiens\core\services\praticien\ServicePraticienInterface;
+use toubeelib\app\praticiens\infrastructure\repositories\PDOPraticienRepository;
 
 return [
 
     PraticienRepositoryInterface::class => function (ContainerInterface $c) {
         return new PDOPraticienRepository();
-    },
-
-    RdvRepositoryInterface::class => function (ContainerInterface $c) {
-        return new PDORdvRepository();
-    },
-
-    ServiceRdvInterface::class => function (ContainerInterface $c) {
-        return new ServiceRdv(
-            $c->get(PraticienRepositoryInterface::class),
-            $c->get(RdvRepositoryInterface::class)
-        );
     },
 
     ServicePraticienInterface::class => function (ContainerInterface $c) {
@@ -39,12 +23,6 @@ return [
     // #####################
     //      Actions
     // #####################
-
-    GetDispoPraticienAction::class => function (ContainerInterface $c) {
-        return new GetDispoPraticienAction(
-            $c->get(ServiceRdvInterface::class),
-        );
-    },
 
     GetPraticienByIdAction::class => function (ContainerInterface $c) {
         return new GetPraticienByIdAction(

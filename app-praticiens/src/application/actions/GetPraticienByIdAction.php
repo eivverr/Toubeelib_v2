@@ -6,8 +6,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Exception\HttpNotFoundException;
 use toubeelib\application\actions\AbstractAction;
-use toubeelib\core\services\praticien\ServicePraticienInterface;
-use toubeelib\core\services\praticien\ServicePraticienInvalidDataException;
+use toubeelib\app\praticiens\core\services\praticien\ServicePraticienInterface;
+use toubeelib\app\praticiens\core\services\praticien\ServicePraticienInvalidDataException;
 
 class GetPraticienByIdAction extends AbstractAction
 {

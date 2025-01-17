@@ -4,8 +4,7 @@ namespace toubeelib\app\praticiens\actions;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use toubeelib\application\actions\AbstractAction;
-use toubeelib\core\services\praticien\ServicePraticienInterface;
+use toubeelib\app\praticiens\core\services\praticien\ServicePraticienInterface;
 
 class GetPraticiensActions extends AbstractAction
 {
