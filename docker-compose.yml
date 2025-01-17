@@ -53,7 +53,7 @@ services:
       - toubeelib.net
     depends_on:
       - toubeelib.db
-    command: php -S
+    command: php -S 0.0.0.0:80 -t /var/php/public
 
   # service toubeelib.db : base de données postgresql
   toubeelib.db:
