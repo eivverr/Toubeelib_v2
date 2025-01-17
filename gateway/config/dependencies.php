@@ -2,7 +2,8 @@
 
 use GuzzleHttp\Client;
 use Psr\Container\ContainerInterface;
-use toubeelib\gateway\application\actions\ConsulterPraticienAction;
+use toubeelib\gateway\application\actions\ConsulterPraticienByIdAction;
+use toubeelib\gateway\application\actions\ConsulterPraticiensAction;
 use toubeelib\gateway\application\actions\HomeAction;
 
 return [
@@ -20,8 +21,14 @@ return [
         );
     },
 
-    ConsulterPraticienAction::class => function (ContainerInterface $c) {
-        return new ConsulterPraticienAction(
+    ConsulterPraticiensAction::class => function (ContainerInterface $c) {
+        return new ConsulterPraticiensAction(
+            $c->get('toubeelib.client')
+        );
+    },
+
+    ConsulterPraticienByIdAction::class => function (ContainerInterface $c) {
+        return new ConsulterPraticienByIdAction(
             $c->get('toubeelib.client')
         );
     },
