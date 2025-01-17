@@ -4,6 +4,7 @@ use GuzzleHttp\Client;
 use Psr\Container\ContainerInterface;
 use toubeelib\gateway\application\actions\ConsulterPraticienByIdAction;
 use toubeelib\gateway\application\actions\ConsulterPraticiensAction;
+use toubeelib\gateway\application\actions\GenericGetPraticienAction;
 use toubeelib\gateway\application\actions\HomeAction;
 
 return [
@@ -29,6 +30,12 @@ return [
 
     ConsulterPraticienByIdAction::class => function (ContainerInterface $c) {
         return new ConsulterPraticienByIdAction(
+            $c->get('toubeelib.client')
+        );
+    },
+
+    GenericGetPraticienAction::class => function (ContainerInterface $c) {
+        return new GenericGetPraticienAction(
             $c->get('toubeelib.client')
         );
     },
