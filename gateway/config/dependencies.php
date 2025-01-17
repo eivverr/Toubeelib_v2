@@ -24,11 +24,20 @@ return [
         ]);
     },
 
+    'rdvs.client' => function () {
+        return new Client([
+            'base_uri' => 'http://rdvs.toubeelib',
+            'timeout' => 2.0,
+        ]);
+    },
+
     HomeAction::class => function (ContainerInterface $c) {
         return new HomeAction(
             $c->get('praticiens.client')
         );
     },
+
+    // ### Praticiens Actions ###
 
     ConsulterPraticiensAction::class => function (ContainerInterface $c) {
         return new ConsulterPraticiensAction(
@@ -53,4 +62,8 @@ return [
             $c->get('praticiens.client')
         );
     },
+
+    // ### Rdvs Actions ###
+
+
 ];
