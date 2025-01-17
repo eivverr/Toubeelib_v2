@@ -3,6 +3,7 @@
 use GuzzleHttp\Client;
 use Psr\Container\ContainerInterface;
 use toubeelib\gateway\application\actions\ConsulterPraticienByIdAction;
+use toubeelib\gateway\application\actions\ConsulterPraticienRdvs;
 use toubeelib\gateway\application\actions\ConsulterPraticiensAction;
 use toubeelib\gateway\application\actions\GenericGetPraticienAction;
 use toubeelib\gateway\application\actions\HomeAction;
@@ -30,6 +31,12 @@ return [
 
     ConsulterPraticienByIdAction::class => function (ContainerInterface $c) {
         return new ConsulterPraticienByIdAction(
+            $c->get('toubeelib.client')
+        );
+    },
+
+    ConsulterPraticienRdvs::class => function (ContainerInterface $c) {
+        return new ConsulterPraticienRdvs(
             $c->get('toubeelib.client')
         );
     },

@@ -12,7 +12,7 @@ return function(App $app): App {
 //    $app->get('/praticiens', ConsulterPraticiensAction::class);
 //    $app->get('/praticiens/{id}', ConsulterPraticienByIdAction::class);
 
-    $app->map(['GET', 'POST', 'PUT', 'PATCH'], '/praticiens[/{id}]', GenericGetPraticienAction::class);
+    $app->map(['GET', 'POST', 'PUT', 'PATCH'], '/praticiens[/{id}[/dispo]]', GenericGetPraticienAction::class);
 
     return $app;
 };

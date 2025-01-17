@@ -42,7 +42,7 @@ class GetDispoPraticienAction extends AbstractAction
             throw new HttpNotFoundException($rq, $e->getMessage());
         }
 
-        $data = ['type' => 'ressource', 'rdv' => $rdv];
+        $data = ['type' => 'collection', 'rdv' => $rdv];
         $rs->getBody()->write(json_encode($data));
 
         return $rs
