@@ -9,10 +9,10 @@ use toubeelib\gateway\application\actions\HomeAction;
 return function(App $app): App {
 
     $app->get('/', HomeAction::class);
-    $app->get('/praticiens', ConsulterPraticiensAction::class);
+//    $app->get('/praticiens', ConsulterPraticiensAction::class);
 //    $app->get('/praticiens/{id}', ConsulterPraticienByIdAction::class);
 
-    $app->map(['GET', 'POST', 'PUT', 'PATCH'], '/praticiens/{id}', GenericGetPraticienAction::class);
+    $app->map(['GET', 'POST', 'PUT', 'PATCH'], '/praticiens[/{id}]', GenericGetPraticienAction::class);
 
     return $app;
 };
