@@ -1,9 +1,9 @@
 <?php
 
-namespace toubeelib\core\services\authorization;
+namespace toubeelib\app\praticiens\core\services\authorization;
 
-use toubeelib\core\domain\entities\praticien\Praticien;
-use toubeelib\core\services\authorization\AuthzPraticienServiceInterface;
+use toubeelib\app\praticiens\core\domain\entities\praticien\Praticien;
+use toubeelib\app\praticiens\core\services\authorization\AuthzPraticienServiceInterface;
 
 class AuthorizationService implements AuthzPraticienServiceInterface
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace toubeelib\app\praticiens\actions;
+namespace toubeelib\app\praticiens\application\actions;
 
 
 use Psr\Container\ContainerInterface;

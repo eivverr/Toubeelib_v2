@@ -2,7 +2,7 @@
 
 namespace toubeelib\app\praticiens\middlewares\authz;
 
-use toubeelib\core\services\authorization\AuthzPraticienServiceInterface;
+use toubeelib\app\praticiens\core\services\authorization\AuthzPraticienServiceInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 
 class AuthzPraticienMiddleware

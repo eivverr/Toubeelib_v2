@@ -1,9 +1,10 @@
 <?php
 
-namespace toubeelib\app\praticiens\actions;
+namespace toubeelib\app\praticiens\application\actions;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use toubeelib\app\praticiens\application\actions\AbstractAction;
 use toubeelib\app\praticiens\core\services\praticien\ServicePraticienInterface;
 
 class GetPraticiensActions extends AbstractAction

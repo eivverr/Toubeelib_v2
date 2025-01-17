@@ -1,8 +1,8 @@
 <?php
 
 use Psr\Container\ContainerInterface;
-use toubeelib\app\praticiens\actions\GetPraticienByIdAction;
-use toubeelib\app\praticiens\actions\GetPraticiensActions;
+use toubeelib\app\praticiens\application\actions\GetPraticienByIdAction;
+use toubeelib\app\praticiens\application\actions\GetPraticiensActions;
 use toubeelib\app\praticiens\core\repositoryInterfaces\PraticienRepositoryInterface;
 use toubeelib\app\praticiens\core\services\praticien\ServicePraticien;
 use toubeelib\app\praticiens\core\services\praticien\ServicePraticienInterface;

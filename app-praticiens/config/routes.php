@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use toubeelib\app\praticiens\actions\GetPraticienByIdAction;
-use toubeelib\app\praticiens\actions\GetPraticiensActions;
+use toubeelib\app\praticiens\application\actions\GetPraticienByIdAction;
+use toubeelib\app\praticiens\application\actions\GetPraticiensActions;
 
 return function( \Slim\App $app):\Slim\App {
 
