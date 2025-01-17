@@ -35,7 +35,8 @@ CREATE TABLE rdvs (
     id VARCHAR PRIMARY KEY,
     id_user VARCHAR,
     id_specialite VARCHAR,
-    daterdv DATE NOT NULL,
+    date_debut DATE NOT NULL,
+    date_fin DATE NOT NULL,
     estAnnule BOOLEAN NOT NULL,
     statut VARCHAR,
     FOREIGN KEY (id_user) REFERENCES users(id),
@@ -69,7 +70,7 @@ INSERT INTO specialitepraticiens (id_user, id_specialite) VALUES
 ('p3', 's1');
 
 
-INSERT INTO rdvs (id, id_user, id_specialite, daterdv, estAnnule, statut) VALUES
-('r1', 'u1', 's1', '2025-01-10', FALSE, 'Confirmé'),
-('r2', 'u2', 's2', '2025-01-15', TRUE, 'Annulé'),
-('r3', 'u3', 's3', '2025-01-20', FALSE, 'En attente');
+INSERT INTO rdvs (id, id_user, id_specialite, date_debut,date_fin, estAnnule, statut) VALUES
+('r1', 'u1', 's1', '2025-01-10', '2025-02-10', FALSE, 'Confirmé'),
+('r2', 'u2', 's2', '2025-01-15','2025-01-20', TRUE, 'Annulé'),
+('r3', 'u3', 's3', '2025-01-20','2025-01-25', FALSE, 'En attente');
