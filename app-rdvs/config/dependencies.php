@@ -1,14 +1,14 @@
 <?php
 
 use Psr\Container\ContainerInterface;
-use toubeelib\application\actions\AnnulerRdvAction;
-use toubeelib\application\actions\GetRdvByIdAction;
-use toubeelib\application\actions\PatchRdvAction;
-use toubeelib\application\actions\PostNewRdvAction;
-use toubeelib\core\repositoryInterfaces\RdvRepositoryInterface;
-use toubeelib\core\services\rdv\ServiceRdv;
-use toubeelib\core\services\rdv\ServiceRdvInterface;
-use toubeelib\infrastructure\repositories\PDORdvRepository;
+use toubeelib\app\rdvs\application\actions\AnnulerRdvAction;
+use toubeelib\app\rdvs\application\actions\GetRdvByIdAction;
+use toubeelib\app\rdvs\application\actions\PatchRdvAction;
+use toubeelib\app\rdvs\application\actions\PostNewRdvAction;
+use toubeelib\app\rdvs\core\repositoryInterfaces\RdvRepositoryInterface;
+use toubeelib\app\rdvs\core\services\rdv\ServiceRdv;
+use toubeelib\app\rdvs\core\services\rdv\ServiceRdvInterface;
+use toubeelib\app\rdvs\infrastructure\repositories\PDORdvRepository;
 
 return [
 
