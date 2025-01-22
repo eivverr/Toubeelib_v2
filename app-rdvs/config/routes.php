@@ -7,14 +7,14 @@ use Psr\Http\Message\ResponseInterface as Response;
 return function( \Slim\App $app):\Slim\App {
 
     // Affiche un rendez-vous
-    $app->get('/rdvs/{id}', \toubeelib\application\actions\GetRdvByIdAction::class)
+    $app->get('/rdvs/{id}', \toubeelib\app\rdvs\application\actions\GetRdvByIdAction::class)
         ->setName('rdvs');
     // Modifier un rendez-vous
-    $app->patch('/rdvs/{id}', \toubeelib\application\actions\PatchRdvAction::class);
+    $app->patch('/rdvs/{id}', \toubeelib\app\rdvs\application\actions\PatchRdvAction::class);
     // Annuler un rendez-vous
-    $app->delete('/rdvs/{id}', \toubeelib\application\actions\AnnulerRdvAction::class);
+    $app->delete('/rdvs/{id}', \toubeelib\app\rdvs\application\actions\AnnulerRdvAction::class);
     // Crée un rendez-vous
-    $app->post('/rdvs', \toubeelib\application\actions\PostNewRdvAction::class);
+    $app->post('/rdvs', \toubeelib\app\rdvs\application\actions\PostNewRdvAction::class);
 
     return $app;
 };
