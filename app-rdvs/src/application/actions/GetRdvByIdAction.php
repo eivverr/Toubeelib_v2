@@ -1,19 +1,19 @@
 <?php
 
-namespace toubeelib\application\actions;
+namespace toubeelib\app\rdvs\application\actions;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Exception\HttpNotFoundException;
 use toubeelib\application\actions\AbstractAction;
-use toubeelib\application\renderer\JsonRenderer;
-use toubeelib\core\repositoryInterfaces\PraticienRepositoryInterface;
-use toubeelib\core\repositoryInterfaces\RdvRepositoryInterface;
-use toubeelib\core\services\rdv\ServiceRdv;
+use toubeelib\app\rdvs\application\renderer\JsonRenderer;
+use toubeelib\app\rdvs\core\repositoryInterfaces\PraticienRepositoryInterface;
+use toubeelib\app\rdvs\core\repositoryInterfaces\RdvRepositoryInterface;
+use toubeelib\app\rdvs\core\services\rdv\ServiceRdv;
 use toubeelib\core\services\rdv\ServiceRdvInterface;
 use toubeelib\core\services\rdv\ServiceRdvInvalidDataException;
-use toubeelib\infrastructure\repositories\PDOPraticienRepository;
-use toubeelib\infrastructure\repositories\PDORdvRepository;
+use toubeelib\app\rdvs\infrastructure\repositories\PDOPraticienRepository;
+use toubeelib\app\rdvs\infrastructure\repositories\PDORdvRepository;
 
 class GetRdvByIdAction extends AbstractAction
 {

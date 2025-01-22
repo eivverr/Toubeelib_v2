@@ -1,10 +1,10 @@
 <?php
 
-namespace toubeelib\core\dto;
+namespace toubeelib\app\rdvs\core\dto;
 
-use toubeelib\core\domain\entities\praticien\Specialite;
-use toubeelib\core\domain\entities\rdv\RendezVous;
-use toubeelib\core\dto\DTO;
+use toubeelib\app\rdvs\core\domain\entities\praticien\Specialite;
+use toubeelib\app\rdvs\core\domain\entities\rdv\RendezVous;
+use toubeelib\app\rdvs\core\dto\DTO;
 
 class RdvDTO extends DTO
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace toubeelib\core\repositoryInterfaces;
+namespace toubeelib\app\rdvs\core\repositoryInterfaces;
 
-use toubeelib\core\domain\entities\rdv\RendezVous;
-use toubeelib\core\dto\InputRdvDTO;
+use toubeelib\app\rdvs\core\domain\entities\rdv\RendezVous;
+use toubeelib\app\rdvs\core\dto\InputRdvDTO;
 
 interface RdvRepositoryInterface
 {

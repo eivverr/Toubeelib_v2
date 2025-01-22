@@ -1,10 +1,10 @@
 <?php
 
-namespace toubeelib\core\domain\entities\rdv;
+namespace toubeelib\app\rdvs\core\domain\entities\rdv;
 
-use toubeelib\core\domain\entities\Entity;
-use toubeelib\core\domain\entities\praticien\Specialite;
-use toubeelib\core\dto\RdvDTO;
+use toubeelib\app\rdvs\core\domain\entities\Entity;
+use toubeelib\app\rdvs\core\domain\entities\praticien\Specialite;
+use toubeelib\app\rdvs\core\dto\RdvDTO;
 
 class RendezVous extends Entity
 {

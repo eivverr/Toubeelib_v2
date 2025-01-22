@@ -1,13 +1,13 @@
 <?php
 
-namespace toubeelib\application\actions;
+namespace toubeelib\app\rdvs\application\actions;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Exception\HttpBadRequestException;
 use toubeelib\application\actions\AbstractAction;
-use toubeelib\core\services\rdv\ServiceRdvInterface;
-use toubeelib\core\services\rdv\ServiceRdvInvalidDataException;
+use toubeelib\app\rdvs\core\services\rdv\ServiceRdvInterface;
+use toubeelib\app\rdvs\core\services\rdv\ServiceRdvInvalidDataException;
 
 class ChangerEtatRdvAction extends AbstractAction
 {

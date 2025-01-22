@@ -1,8 +1,8 @@
 <?php
 
-namespace toubeelib\core\dto;
+namespace toubeelib\app\rdvs\core\dto;
 
-use toubeelib\core\dto\DTO;
+use toubeelib\app\rdvs\core\dto\DTO;
 
 class CredentialsDTO extends DTO
 {

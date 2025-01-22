@@ -1,14 +1,14 @@
 <?php
 
-namespace toubeelib\core\services\rdv;
+namespace toubeelib\app\rdvs\core\services\rdv;
 
 use DateTime;
-use toubeelib\core\dto\RdvDTO;
-use toubeelib\core\dto\InputRdvDTO;
-use toubeelib\core\repositoryInterfaces\PraticienRepositoryInterface;
-use toubeelib\core\repositoryInterfaces\RdvRepositoryInterface;
-use toubeelib\core\repositoryInterfaces\RepositoryEntityNotFoundException;
-use toubeelib\core\services\rdv\ServiceRdvInterface;
+use toubeelib\app\rdvs\core\dto\RdvDTO;
+use toubeelib\app\rdvs\core\dto\InputRdvDTO;
+use toubeelib\app\rdvs\core\repositoryInterfaces\PraticienRepositoryInterface;
+use toubeelib\app\rdvs\core\repositoryInterfaces\RdvRepositoryInterface;
+use toubeelib\app\rdvs\core\repositoryInterfaces\RepositoryEntityNotFoundException;
+use toubeelib\app\rdvs\core\services\rdv\ServiceRdvInterface;
 
 class ServiceRdv implements ServiceRdvInterface
 {

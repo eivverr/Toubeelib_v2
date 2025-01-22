@@ -1,6 +1,6 @@
 <?php
 
-namespace toubeelib\core\dto;
+namespace toubeelib\app\rdvs\core\dto;
 
 use Respect\Validation\Validatable;
 use Respect\Validation\Validator;

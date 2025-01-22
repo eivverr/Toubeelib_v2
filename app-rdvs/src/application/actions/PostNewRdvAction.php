@@ -1,17 +1,17 @@
 <?php
 
-namespace toubeelib\application\actions;
+namespace toubeelib\app\rdvs\application\actions;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Respect\Validation\Validator;
 use Slim\Exception\HttpBadRequestException;
 use Slim\Routing\RouteContext;
-use toubeelib\application\actions\AbstractAction;
-use toubeelib\application\renderer\JsonRenderer;
-use toubeelib\core\dto\InputRdvDTO;
-use toubeelib\core\services\rdv\ServiceRdvInterface;
-use toubeelib\core\services\rdv\ServiceRdvInvalidDataException;
+use toubeelib\app\rdvs\application\actions\AbstractAction;
+use toubeelib\app\rdvs\application\renderer\JsonRenderer;
+use toubeelib\app\rdvs\core\dto\InputRdvDTO;
+use toubeelib\app\rdvs\core\services\rdv\ServiceRdvInterface;
+use toubeelib\app\rdvs\core\services\rdv\ServiceRdvInvalidDataException;
 
 class PostNewRdvAction extends AbstractAction
 {

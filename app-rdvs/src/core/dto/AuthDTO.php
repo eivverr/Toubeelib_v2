@@ -1,9 +1,9 @@
 <?php
 
-namespace toubeelib\core\dto;
+namespace toubeelib\app\rdvs\core\dto;
 
-use toubeelib\core\domain\entities\User;
-use toubeelib\core\dto\DTO;
+use toubeelib\app\rdvs\core\domain\entities\User;
+use toubeelib\app\rdvs\core\dto\DTO;
 
 class AuthDTO extends DTO
 {

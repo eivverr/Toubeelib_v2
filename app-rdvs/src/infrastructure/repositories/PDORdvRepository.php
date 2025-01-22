@@ -1,13 +1,13 @@
 <?php
 
-namespace toubeelib\infrastructure\repositories;
+namespace toubeelib\app\rdvs\infrastructure\repositories;
 
 use PDO;
 use Ramsey\Uuid\Uuid;
-use toubeelib\core\domain\entities\rdv\RendezVous;
-use toubeelib\core\dto\InputRdvDTO;
-use toubeelib\core\repositoryInterfaces\RdvRepositoryInterface;
-use toubeelib\core\repositoryInterfaces\RepositoryEntityNotFoundException;
+use toubeelib\app\rdvs\core\domain\entities\rdv\RendezVous;
+use toubeelib\app\rdvs\core\dto\InputRdvDTO;
+use toubeelib\app\rdvs\core\repositoryInterfaces\RdvRepositoryInterface;
+use toubeelib\app\rdvs\core\repositoryInterfaces\RepositoryEntityNotFoundException;
 
 class PDORdvRepository implements RdvRepositoryInterface
 {
