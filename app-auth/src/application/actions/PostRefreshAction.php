@@ -9,7 +9,7 @@ use toubeelib\app\auth\core\dto\CredentialsDTO;
 use toubeelib\app\auth\core\services\auth\AuthServiceBadDataException;
 use toubeelib\app\auth\providers\auth\AuthProviderInterface;
 
-class PostSigninAction extends AbstractAction
+class PostRefreshAction extends AbstractAction
 {
 
     private AuthProviderInterface $authProvider;

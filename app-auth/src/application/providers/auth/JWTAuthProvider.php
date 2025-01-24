@@ -1,13 +1,12 @@
 <?php
 
-namespace toubeelib\application\providers\auth;
+namespace toubeelib\app\auth\providers\auth;
 
 use PhpParser\Token;
-use toubeelib\application\providers\auth\AuthProviderInterface;
-use toubeelib\core\domain\entities\User;
-use toubeelib\core\dto\AuthDTO;
-use toubeelib\core\dto\CredentialsDTO;
-use toubeelib\core\services\auth\AuthServiceInterface;
+use toubeelib\app\auth\core\domain\entities\User;
+use toubeelib\app\auth\core\dto\AuthDTO;
+use toubeelib\app\auth\core\dto\CredentialsDTO;
+use toubeelib\app\auth\core\services\auth\AuthServiceInterface;
 
 class JWTAuthProvider implements AuthProviderInterface
 {

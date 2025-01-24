@@ -1,8 +1,9 @@
 <?php
 
-namespace toubeelib\application\middlewares\authz;
 
-use toubeelib\core\services\authorization\AuthzPraticienServiceInterface;
+namespace toubeelib\app\auth\application\middlewares\authz;
+
+use toubeelib\app\auth\core\services\authorization\AuthzPraticienServiceInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 
 class AuthzPraticienMiddleware

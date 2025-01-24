@@ -1,12 +1,12 @@
 <?php
 
-namespace toubeelib\infrastructure\repositories;
+namespace toubeelib\app\auth\infrastructure\repositories;
 
 use PDO;
 use Ramsey\Uuid\Uuid;
-use toubeelib\core\domain\entities\User;
-use toubeelib\core\repositoryInterfaces\RepositoryEntityNotFoundException;
-use toubeelib\core\repositoryInterfaces\UserRepositoryInterface;
+use toubeelib\app\auth\core\domain\entities\User;
+use toubeelib\app\auth\core\repositoryInterfaces\RepositoryEntityNotFoundException;
+use toubeelib\app\auth\core\repositoryInterfaces\UserRepositoryInterface;
 
 class PDOUserRepository implements UserRepositoryInterface
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace toubeelib\core\domain\entities;
+namespace toubeelib\app\auth\core\domain\entities;
 
-use toubeelib\core\dto\AuthDTO;
+use toubeelib\app\auth\core\dto\AuthDTO;
 
 class User extends Entity
 {

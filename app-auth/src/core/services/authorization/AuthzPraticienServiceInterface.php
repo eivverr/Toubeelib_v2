@@ -1,6 +1,6 @@
 <?php
 
-namespace toubeelib\core\services\authorization;
+namespace toubeelib\app\auth\core\services\authorization;
 
 interface AuthzPraticienServiceInterface
 {

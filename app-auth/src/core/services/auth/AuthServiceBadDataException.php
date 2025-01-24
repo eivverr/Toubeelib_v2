@@ -1,6 +1,6 @@
 <?php
 
-namespace toubeelib\core\services\auth;
+namespace toubeelib\app\auth\core\services\auth;
 
 class AuthServiceBadDataException extends \Exception
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace toubeelib\application\renderer;
+namespace toubeelib\app\auth\providers\renderer;
 
 use Psr\Http\Message\ResponseInterface as Response;
 

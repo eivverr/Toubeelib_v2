@@ -1,9 +1,8 @@
 <?php
 
-namespace toubeelib\application\middlewares;
+namespace toubeelib\app\auth\application\middlewares;
 
-
-use nrv\application\providers\AuthnProviderInterface;
+use toubeelib\app\auth\providers\auth\AuthProviderInterface;
 use Firebase\JWT\ExpiredException;
 use Firebase\JWT\SignatureInvalidException;
 use Firebase\JWT\BeforeValidException;
