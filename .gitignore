@@ -20,3 +20,4 @@ composer.lock
 /gateway/vendor/
 /app-praticiens/vendor/
 /app-rdvs/vendor/
+/app-auth/vendor
