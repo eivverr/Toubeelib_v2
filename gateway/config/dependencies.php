@@ -8,6 +8,9 @@ use toubeelib\gateway\application\actions\ConsulterPraticiensAction;
 use toubeelib\gateway\application\actions\GenericGetPraticienAction;
 use toubeelib\gateway\application\actions\GenericGetRdvsAction;
 use toubeelib\gateway\application\actions\HomeAction;
+use toubeelib\gateway\application\actions\RefreshTokenAction;
+use toubeelib\gateway\application\actions\RegisterAction;
+use toubeelib\gateway\application\actions\SignInAction;
 
 return [
 
@@ -28,6 +31,13 @@ return [
     'rdvs.client' => function () {
         return new Client([
             'base_uri' => 'http://rdvs.toubeelib',
+            'timeout' => 2.0,
+        ]);
+    },
+
+    'auth.client' => function () {
+        return new Client([
+            'base_uri' => 'http://auth.toubeelib',
             'timeout' => 2.0,
         ]);
     },
@@ -71,4 +81,26 @@ return [
             $c->get('rdvs.client')
         );
     },
+
+    // ### Auth Actions ###
+
+    SignInAction::class => function (ContainerInterface $c) {
+        return new SignInAction(
+            $c->get('auth.client')
+        );
+    },
+
+    RegisterAction::class => function (ContainerInterface $c) {
+        return new \toubeelib\gateway\application\actions\RegisterAction(
+            $c->get('auth.client')
+        );
+    },
+
+    RefreshTokenAction::class => function (ContainerInterface $c) {
+        return new \toubeelib\gateway\application\actions\RefreshTokenAction(
+            $c->get('auth.client')
+        );
+    },
+
+
 ];
