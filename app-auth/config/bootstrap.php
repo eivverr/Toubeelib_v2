@@ -4,7 +4,7 @@ use DI\ContainerBuilder;
 use Slim\Factory\AppFactory;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use toubeelib\application\middlewares\CorsMiddleware;
+use toubeelib\app\auth\application\middlewares\CorsMiddleware;
 
 $builder = new ContainerBuilder();
 $builder->addDefinitions(__DIR__ . '/settings.php' );
