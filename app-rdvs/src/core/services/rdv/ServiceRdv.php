@@ -5,9 +5,9 @@ namespace toubeelib\app\rdvs\core\services\rdv;
 use DateTime;
 use toubeelib\app\rdvs\core\dto\RdvDTO;
 use toubeelib\app\rdvs\core\dto\InputRdvDTO;
-use toubeelib\app\rdvs\core\repositoryInterfaces\PraticienRepositoryInterface;
 use toubeelib\app\rdvs\core\repositoryInterfaces\RdvRepositoryInterface;
 use toubeelib\app\rdvs\core\repositoryInterfaces\RepositoryEntityNotFoundException;
+use toubeelib\app\rdvs\core\services\praticien\ServicePraticienInterface;
 use toubeelib\app\rdvs\core\services\rdv\ServiceRdvInterface;
 
 class ServiceRdv implements ServiceRdvInterface
@@ -19,12 +19,12 @@ class ServiceRdv implements ServiceRdvInterface
     public const HEURE_PAUSE_FIN = 13;
     public const JOURS_TRAVAIL = [1, 2, 3, 4, 5];
 
-    private PraticienRepositoryInterface $praticienRepository;
+    private ServicePraticienInterface $praticienService;
     private RdvRepositoryInterface $rdvRepository;
 
-    public function __construct(PraticienRepositoryInterface $praticienRepository, RdvRepositoryInterface $rdvRepository)
+    public function __construct(ServicePraticienInterface $praticienService, RdvRepositoryInterface $rdvRepository)
     {
-        $this->praticienRepository = $praticienRepository;
+        $this->praticienService = $praticienService;
         $this->rdvRepository = $rdvRepository;
     }
 
@@ -40,7 +40,7 @@ class ServiceRdv implements ServiceRdvInterface
 
     public function creerRendezVous(InputRdvDTO $rdv): RdvDTO
     {
-        $praticien = $this->praticienRepository->getPraticienById($rdv->getID_praticien());
+        $praticien = $this->praticienService->getPraticienById($rdv->getID_praticien());
         if ($praticien === null) {
             throw new ServiceRdvInvalidDataException('Invalid praticien ID');
         }

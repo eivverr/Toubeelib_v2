@@ -6,6 +6,7 @@ use toubeelib\gateway\application\actions\ConsulterPraticienByIdAction;
 use toubeelib\gateway\application\actions\ConsulterPraticienRdvs;
 use toubeelib\gateway\application\actions\ConsulterPraticiensAction;
 use toubeelib\gateway\application\actions\GenericGetPraticienAction;
+use toubeelib\gateway\application\actions\GenericGetRdvsAction;
 use toubeelib\gateway\application\actions\HomeAction;
 
 return [
@@ -65,5 +66,9 @@ return [
 
     // ### Rdvs Actions ###
 
-
+    GenericGetRdvsAction::class => function (ContainerInterface $c) {
+        return new GenericGetRdvsAction(
+            $c->get('rdvs.client')
+        );
+    },
 ];
