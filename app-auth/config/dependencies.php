@@ -48,5 +48,9 @@ return [
         return new \toubeelib\app\auth\application\actions\PostRefreshAction($container->get(AuthProviderInterface::class));
     },
 
+    \toubeelib\app\auth\application\actions\GetValidateTokenAction::class => function (ContainerInterface $container) {
+        return new \toubeelib\app\auth\application\actions\GetValidateTokenAction($container->get(AuthProviderInterface::class));
+    },
+
 
 ];

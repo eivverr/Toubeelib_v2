@@ -20,5 +20,7 @@ return function( \Slim\App $app):\Slim\App {
     $app->post('/refresh', PostRefreshAction::class)
         ->setName('refresh');
 
+    $app->get('/tokens/validate', \toubeelib\app\auth\application\actions\GetValidateTokenAction::class)
+        ->setName('validate');
     return $app;
 };

@@ -10,10 +10,9 @@ class User extends Entity
     protected string $password;
     protected int $role;
 
-    public function __construct(string $email, string $password, int $role)
+    public function __construct(string $email, int $role)
     {
         $this->email = $email;
-        $this->password = $password;
         $this->role = $role;
     }
 

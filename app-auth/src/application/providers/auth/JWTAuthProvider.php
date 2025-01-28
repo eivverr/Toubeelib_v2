@@ -40,17 +40,26 @@ class JWTAuthProvider implements AuthProviderInterface
         return $authDTO;
     }
 
-    public function refresh(Token $token): AuthDTO
+    public function refresh(string $token): AuthDTO
     {
         // TODO: Implement refresh() method.
     }
 
-    public function getSignedInUser(Token $token): AuthDTO
+    public function getSignedInUser(string $token): AuthDTO
     {
         $decodedToken = $this->jwtManager->decodeToken($token);
+
+        if (empty($decodedToken['id']) || empty($decodedToken['email']) || empty($decodedToken['role'])) {
+            throw new \Exception('Invalid token data');
+        }
+
         $id = $decodedToken['id'];
         $email = $decodedToken['email'];
         $role = $decodedToken['role'];
-        return new AuthDTO(new User($id, $email, $role));
+
+        $user = new User($email, $role);
+        $user->setId($id);
+
+        return new AuthDTO($user);
     }
 }

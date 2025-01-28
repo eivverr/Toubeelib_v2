@@ -73,7 +73,8 @@ class PDOUserRepository implements UserRepositoryInterface
 
     private function hydrateUser(array $data): User
     {
-        $user = new User($data['email'], $data['password'], $data['role']);
+        $user = new User($data['email'], $data['role']);
+        $user->setPassword($data['password']);
         $user->setId($data['id']);
         return $user;
     }
