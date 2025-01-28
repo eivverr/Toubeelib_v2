@@ -19,7 +19,7 @@ return function(App $app): App {
     $app->post('/signin', SignInAction::class);
     $app->post('refresh', RefreshTokenAction::class);
 
-    $app->map(['GET', 'POST', 'PUT', 'PATCH'], '/praticiens[/{id}[/dispo]]', GenericGetPraticienAction::class);
+    $app->map(['GET', 'POST', 'PUT', 'PATCH'], '/praticiens[/{id}]', GenericGetPraticienAction::class);
 
     $app->map(['GET', 'POST', 'PUT', 'PATCH'], '/rdvs/{id}', GenericGetRdvsAction::class);
 
