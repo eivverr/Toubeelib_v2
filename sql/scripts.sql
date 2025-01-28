@@ -11,6 +11,7 @@ CREATE TABLE users (
     adresse VARCHAR,
     tel VARCHAR,
     email VARCHAR NOT NULL,
+    mdp VARCHAR NOT NULL,
     role VARCHAR,
     FOREIGN KEY (role) REFERENCES roles(id)
 );
@@ -51,13 +52,13 @@ INSERT INTO roles (id, libelle_role) VALUES
 ('3', 'Patient');
 
 -- Table users
-INSERT INTO users (id, nom, prenom, adresse, tel, email, role) VALUES
-('p1', 'Dupont', 'Jean', '1 Rue Exemple', '0123456789', 'jean.dupont@example.com', '1'),
-('p2', 'Martin', 'Marie', '2 Rue Exemple', '0123456790', 'marie.martin@example.com', '1'),
-('p3', 'Durand', 'Paul', '3 Rue Exemple', '0123456791', 'paul.durand@example.com', '1'),
-('u1', 'Doe', 'John', '10 Avenue Test', '0987654321', 'john.doe@example.com', '3'),
-('u2', 'Smith', 'Anna', '11 Avenue Test', '0987654322', 'anna.smith@example.com', '3'),
-('u3', 'Brown', 'Emily', '12 Avenue Test', '0987654323', 'emily.brown@example.com', '3');
+INSERT INTO users (id, nom, prenom, adresse, tel, email, mdp, role) VALUES
+('p1', 'Dupont', 'Jean', '1 Rue Exemple', '0123456789', 'jean.dupont@example.com', 'e10adc3949ba59abbe56e057f20f883e', '1'), -- mdp: "123456"
+('p2', 'Martin', 'Marie', '2 Rue Exemple', '0123456790', 'marie.martin@example.com', '25d55ad283aa400af464c76d713c07ad', '1'), -- mdp: "12345678"
+('p3', 'Durand', 'Paul', '3 Rue Exemple', '0123456791', 'paul.durand@example.com', '5d41402abc4b2a76b9719d911017c592', '1'), -- mdp: "hello"
+('u1', 'Doe', 'John', '10 Avenue Test', '0987654321', 'john.doe@example.com', '81dc9bdb52d04dc20036dbd8313ed055', '3'), -- mdp: "1234"
+('u2', 'Smith', 'Anna', '11 Avenue Test', '0987654322', 'anna.smith@example.com', '21232f297a57a5a743894a0e4a801fc3', '3'), -- mdp: "admin"
+('u3', 'Brown', 'Emily', '12 Avenue Test', '0987654323', 'emily.brown@example.com', '202cb962ac59075b964b07152d234b70', '3'); -- mdp: "123"
 
 -- Table specialites
 INSERT INTO specialites (id, label, description) VALUES
