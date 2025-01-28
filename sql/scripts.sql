@@ -52,7 +52,7 @@ INSERT INTO roles (id, libelle_role) VALUES
 ('3', 'Patient');
 
 -- Table users
-INSERT INTO users (id, nom, prenom, adresse, tel, email, mdp, role) VALUES
+INSERT INTO users (id, nom, prenom, adresse, tel, email, password, role) VALUES
 ('p1', 'Dupont', 'Jean', '1 Rue Exemple', '0123456789', 'jean.dupont@example.com', 'e10adc3949ba59abbe56e057f20f883e', '1'), -- mdp: "123456"
 ('p2', 'Martin', 'Marie', '2 Rue Exemple', '0123456790', 'marie.martin@example.com', '25d55ad283aa400af464c76d713c07ad', '1'), -- mdp: "12345678"
 ('p3', 'Durand', 'Paul', '3 Rue Exemple', '0123456791', 'paul.durand@example.com', '5d41402abc4b2a76b9719d911017c592', '1'), -- mdp: "hello"

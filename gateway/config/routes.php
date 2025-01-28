@@ -17,7 +17,7 @@ return function(App $app): App {
 //    $app->get('/praticiens/{id}', ConsulterPraticienByIdAction::class);
     $app->post('/register', RegisterAction::class);
     $app->post('/signin', SignInAction::class);
-    $app->post('refresh', RefreshTokenAction::class);
+    $app->post('/refresh', RefreshTokenAction::class);
 
     $app->map(['GET', 'POST', 'PUT', 'PATCH'], '/praticiens[/{id}]', GenericGetPraticienAction::class);
 
