@@ -6,13 +6,13 @@ CREATE TABLE roles (
 
 CREATE TABLE users (
     id VARCHAR PRIMARY KEY,
-    nom VARCHAR NOT NULL,
-    prenom VARCHAR NOT NULL,
+    nom VARCHAR,
+    prenom VARCHAR,
     adresse VARCHAR,
     tel VARCHAR,
     email VARCHAR NOT NULL,
-    mdp VARCHAR NOT NULL,
-    role VARCHAR,
+    password VARCHAR NOT NULL,
+    role VARCHAR NOT NULL,
     FOREIGN KEY (role) REFERENCES roles(id)
 );
 

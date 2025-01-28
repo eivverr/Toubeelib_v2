@@ -5,7 +5,8 @@ namespace toubeelib\app\auth\application\actions;
 use GuzzleHttp\Client;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use toubeelib\app\auth\providers\auth\AuthProviderInterface;
+use toubeelib\app\auth\application\providers\auth\AuthProviderInterface;
+use toubeelib\app\auth\core\dto\CredentialsDTO;
 
 class PostRegisterAction extends AbstractAction
 {
@@ -24,16 +25,14 @@ class PostRegisterAction extends AbstractAction
         $email = $data['email'] ?? null;
         $password = $data['password'] ?? null;
 
-        $client = new Client();
-        $response = $client->post('http://localhost:8080/register', [
-            'json' => [
-                'email' => $email,
-                'password' => $password
-            ]
-        ]);
+        $credentialsDTO = new CredentialsDTO($email, $password);
 
-        $rs->getBody()->write($response->getBody());
+        $this->authProvider->register($credentialsDTO, 3);
 
-        return $rs->withHeader('Content-Type', 'application/json')->withStatus($response->getStatusCode());
+        $rs->getBody()->write(json_encode([
+            'message' => 'User registered successfully'
+        ]));
+
+        return $rs->withHeader('Content-Type', 'application/json')->withStatus($rs->getStatusCode());
     }
 }

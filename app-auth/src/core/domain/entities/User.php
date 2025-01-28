@@ -6,21 +6,15 @@ use toubeelib\app\auth\core\dto\AuthDTO;
 
 class User extends Entity
 {
-    protected string $id;
     protected string $email;
     protected string $password;
     protected int $role;
 
-    public function __construct(string $id, string $email, int $role)
+    public function __construct(string $email, string $password, int $role)
     {
-        $this->id = $id;
         $this->email = $email;
+        $this->password = $password;
         $this->role = $role;
-    }
-
-    public function getId(): string
-    {
-        return $this->id;
     }
 
     public function getEmail(): string

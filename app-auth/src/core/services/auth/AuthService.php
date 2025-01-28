@@ -20,15 +20,14 @@ class AuthService implements AuthServiceInterface
 
     public function createUser(CredentialsDTO $credentials, int $role): string
     {
-        $user = new User(Uuid::uuid4()->toString(), $credentials->getEmail(), $role);
-        $user->setPassword(password_hash($credentials->getPassword(), PASSWORD_DEFAULT));
+        $user = new User($credentials->getEmail(),password_hash($credentials->getPassword(), PASSWORD_DEFAULT) , $role);
+        $user->setId(Uuid::uuid4()->toString());
         return $this->userRepository->save($user);
     }
 
     public function byCredentials(CredentialsDTO $credentials): AuthDTO
     {
         $user = $this->userRepository->getUserByEmail($credentials->getEmail());
-
         if ($user && password_verify($credentials->getPassword(), $user->getPassword())) {
             return new AuthDTO($user);
         } else {

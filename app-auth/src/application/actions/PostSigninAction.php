@@ -5,9 +5,9 @@ namespace toubeelib\app\auth\application\actions;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Exception\HttpBadRequestException;
+use toubeelib\app\auth\application\providers\auth\AuthProviderInterface;
 use toubeelib\app\auth\core\dto\CredentialsDTO;
 use toubeelib\app\auth\core\services\auth\AuthServiceBadDataException;
-use toubeelib\app\auth\providers\auth\AuthProviderInterface;
 
 class PostSigninAction extends AbstractAction
 {

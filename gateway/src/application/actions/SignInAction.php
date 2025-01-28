@@ -23,7 +23,7 @@ class SignInAction extends AbstractGatewayAction
     {
         try {
             $data = $rq->getParsedBody();
-            $response = $this->authService->post('/login', ['json' => $data]);
+            $response = $this->authService->post('/signin', ['json' => $data]);
             return $response;
         } catch (ClientException $e) {
             throw new HttpNotFoundException($rq, "User not found");

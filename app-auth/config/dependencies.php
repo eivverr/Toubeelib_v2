@@ -1,22 +1,35 @@
 <?php
 
 use Psr\Container\ContainerInterface;
+use toubeelib\app\auth\core\repositoryInterfaces\UserRepositoryInterface;
 use toubeelib\app\auth\core\services\auth\AuthService;
-use toubeelib\app\auth\providers\auth\AuthProviderInterface;
-use toubeelib\app\auth\providers\auth\JWTAuthProvider;
+use toubeelib\app\auth\core\services\auth\AuthServiceInterface;
+use toubeelib\app\auth\infrastructure\repositories\PDOUserRepository;
+use toubeelib\app\auth\application\providers\auth\AuthProviderInterface;
+use toubeelib\app\auth\application\providers\auth\JWTAuthProvider;
+use toubeelib\app\auth\application\providers\auth\JWTManager;
 
 return [
 
-    \toubeelib\application\providers\auth\JWTManager::class => function(ContainerInterface $container) {
-        return new \toubeelib\application\providers\auth\JWTManager();
+    JWTManager::class => function(ContainerInterface $container) {
+        return new JWTManager();
     },
 
-    \toubeelib\app\auth\core\services\auth\AuthService::class => function(ContainerInterface $container) {
-        return new AuthService($container->get(\toubeelib\app\auth\core\repositoryInterfaces\UserRepositoryInterface::class));
+    UserRepositoryInterface::class => function(ContainerInterface $container) {
+        return $container->get(PDOUserRepository::class);
+    },
+
+    AuthServiceInterface::class => function(ContainerInterface $container) {
+        return new AuthService(
+            $container->get(UserRepositoryInterface::class)
+        );
     },
 
     AuthProviderInterface::class => function(ContainerInterface $container) {
-        return new JWTAuthProvider($container->get(\toubeelib\application\providers\auth\JWTManager::class), $container->get(AuthService::class));
+        return new JWTAuthProvider(
+            $container->get(JWTManager::class),
+            $container->get(AuthServiceInterface::class)
+        );
     },
 
     // #####################

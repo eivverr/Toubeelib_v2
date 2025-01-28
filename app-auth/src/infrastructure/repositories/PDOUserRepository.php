@@ -3,42 +3,52 @@
 namespace toubeelib\app\auth\infrastructure\repositories;
 
 use PDO;
-use Ramsey\Uuid\Uuid;
+use PDOException;
 use toubeelib\app\auth\core\domain\entities\User;
 use toubeelib\app\auth\core\repositoryInterfaces\RepositoryEntityNotFoundException;
 use toubeelib\app\auth\core\repositoryInterfaces\UserRepositoryInterface;
 
 class PDOUserRepository implements UserRepositoryInterface
 {
-
     private PDO $pdo;
-
-    private array $users = [];
 
     public function __construct()
     {
-        $dbCredentials = parse_ini_file(__DIR__ . '/../../../toubeelibdb.env');
-        $pdo = new PDO('pgsql:host=toubeelib.db;dbname=toubeelib', $dbCredentials["POSTGRES_USER"], $dbCredentials["POSTGRES_PASSWORD"]);
-        $stmt = $pdo->query('SELECT * FROM USERS');
-        $users = $stmt->fetchAll();
-        foreach ($users as $user) {
-            $this->users[$user['ID']] = new User($user['ID'], $user['email'], $user['password']);
+        $dbCredentials = parse_ini_file(__DIR__ . '/../../../config/toubeelibdb.env');
+        try {
+            $this->pdo = new PDO(
+                'pgsql:host=toubeelib.db;dbname=toubeelib',
+                $dbCredentials['POSTGRES_USER'],
+                $dbCredentials['POSTGRES_PASSWORD'],
+                [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+            );
+        } catch (PDOException $e) {
+            throw new \RuntimeException("Database connection failed: " . $e->getMessage());
         }
-
     }
 
     public function getUserById(string $id): User
     {
-        if (!isset($this->users[$id])) {
+        $stmt = $this->pdo->prepare('SELECT * FROM USERS WHERE id = :id');
+        $stmt->execute(['id' => $id]);
+        $PDOuser = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$PDOuser) {
             throw new RepositoryEntityNotFoundException('User not found');
         }
-        return $this->users[$id];
+
+        return $this->hydrateUser($PDOuser);
     }
 
     public function save(User $user): string
     {
-        $this->users[$user->getId()] = $user;
-        $this->pdo->insert('INSERT INTO USERS (ID, email, password, role) VALUES (:id, :email, :password, :role) ON DUPLICATE KEY UPDATE email = VALUES(email), password = VALUES(password), role = VALUES(role)', [
+        $stmt = $this->pdo->prepare(
+            'INSERT INTO USERS (id, email, password, role) 
+             VALUES (:id, :email, :password, :role) 
+             ON CONFLICT (id) 
+             DO UPDATE SET email = EXCLUDED.email, password = EXCLUDED.password, role = EXCLUDED.role'
+        );
+        $stmt->execute([
             'id' => $user->getId(),
             'email' => $user->getEmail(),
             'password' => $user->getPassword(),
@@ -50,11 +60,21 @@ class PDOUserRepository implements UserRepositoryInterface
 
     public function getUserByEmail(string $email): User
     {
-        foreach ($this->users as $user) {
-            if ($user->getEmail() === $email) {
-                return $user;
-            }
+        $stmt = $this->pdo->prepare('SELECT * FROM USERS WHERE email = :email');
+        $stmt->execute(['email' => $email]);
+        $PDOuser = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$PDOuser) {
+            throw new RepositoryEntityNotFoundException('User not found');
         }
-        throw new RepositoryEntityNotFoundException('User not found');
+
+        return $this->hydrateUser($PDOuser);
+    }
+
+    private function hydrateUser(array $data): User
+    {
+        $user = new User($data['email'], $data['password'], $data['role']);
+        $user->setId($data['id']);
+        return $user;
     }
 }
