@@ -42,6 +42,12 @@ return [
         ]);
     },
 
+    \toubeelib\gateway\application\middlewares\AuthMiddleware::class => function (ContainerInterface $c) {
+        return new \toubeelib\gateway\application\middlewares\AuthMiddleware(
+            $c->get('auth.client')
+        );
+    },
+
     HomeAction::class => function (ContainerInterface $c) {
         return new HomeAction(
             $c->get('praticiens.client')

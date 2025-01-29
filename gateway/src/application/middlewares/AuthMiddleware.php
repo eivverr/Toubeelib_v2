@@ -2,24 +2,23 @@
 
 namespace toubeelib\gateway\application\middlewares;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
+use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Server\RequestHandlerInterface;
 use Slim\Psr7\Response;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\GuzzleException;
 
 class AuthMiddleware
 {
-    private $authServiceUrl;
-    private $client;
+    private ClientInterface $remoteAuthService;
 
-    public function __construct(string $authServiceUrl)
+    public function __construct(ClientInterface $client)
     {
-        $this->authServiceUrl = $authServiceUrl;
-        $this->client = new Client();
+        $this->remoteAuthService = $client;
     }
 
-    public function __invoke(Request $rq, RequestHandlerInterface $handler): Response
+    public function __invoke(Request $rq, RequestHandlerInterface $handler): \Psr\Http\Message\ResponseInterface
     {
         try {
             $token = $rq->getHeaderLine('Authorization');
@@ -29,22 +28,21 @@ class AuthMiddleware
 
             $tokenstring = $matches[1];
 
-            $response = $this->client->get($this->authServiceUrl . '/tokens/validate', [
+            $response = $this->remoteAuthService->get('/tokens/validate', [
                 'headers' => [
                     'Authorization' => 'Bearer ' . $tokenstring,
                 ]
             ]);
 
             if ($response->getStatusCode() == 200) {
-                $authData = json_decode($response->getBody()->getContents(), true);
-                $rq = $rq->withAttribute('auth', $authData['user']);
-
                 return $handler->handle($rq);
             } else {
                 return (new Response())->withStatus(401);
             }
         } catch (RequestException|\Exception $e) {
-            return (new Response())->withStatus(401);
+            return (new Response())->withStatus(401, $e->getMessage());
+        } catch (GuzzleException $e) {
+            return (new Response())->withStatus(502, 'Bad Gateway');
         }
     }
 }

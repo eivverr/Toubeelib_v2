@@ -23,7 +23,7 @@ return function(App $app): App {
     $app->map(['GET', 'POST', 'PUT', 'PATCH'], '/praticiens[/{id}]', GenericGetPraticienAction::class);
 
     $app->map(['GET', 'POST', 'PUT', 'PATCH'], '/rdvs/{id}', GenericGetRdvsAction::class)
-        ->add(new AuthMiddleware('http://localhost:6084'));
+        ->add(AuthMiddleware::class);
 
     return $app;
 };
