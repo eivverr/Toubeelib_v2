@@ -5,4 +5,4 @@
 - TD 1 à TD 7
 - Aucune des fonctionnalités étendues a été réalisée
 
-Lien du repository Github https://github.com/WashiFR/Toubeelib_v2
+Lien du repository Github https://github.com/eivverr/Toubeelib_v2
